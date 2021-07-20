@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+<title>{% block title %} Login | Registration {% endblock %}</title>
+
+{% block content%}
+
+<div class="row my-4 my-3 p-3">
+    <!-- REGISTER -->
+    <div class="col-5 offset-1 me-2 p-2 shadow-sm  bg-light">
+        <h3 class="text-center mb-3">Registration</h3>
+        <form action="/register" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <div class="mb-3 row g-3 align-items-center">
+                    <div class="col-3">
+                        <label for="name" class="col-form-label">Name:</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="text" class="form-control" id="name" name="name" required >                          
+                    </div>
+                </div>
+                <div class="mb-3 row g-3 align-items-center">
+                    <div class="col-3">
+                        <label for="userName" class="col-form-label">User Name:</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="text" class="form-control" id="userName" name="userName" required>                          
+                    </div>
+                </div>
+              
+                <div class="mb-3 row g-3 align-items-center">
+                    <div class="col-3">
+                         <label for="password" class="col-form-label">Password:</label>
+                    </div>
+                    <div class="col-8">
+                         <input type="password" id="password" class="form-control" name="password" required>
+                    </div>
+                </div>
+                <div class="mb-3 row g-3 align-items-center">
+                    <div class="col-3">
+                         <label for="confirmpw" class="col-form-label">Confirm PW:</label>
+                    </div>
+                    <div class="col-8">
+                         <input type="password" id="confirmPw" class="form-control" name="confirmPw" required>
+                    </div>
+                </div>
+            </div>                       
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-2">
+                <button id="btnRegister" type="submit" class="btn btn-primary">Register</button>
+            </div>        
+        </form>
+    </div>
+    
+    <!-- LOGIN -->
+    <div class="col-5 p-2 shadow-sm  bg-light">
+        <h3 class="text-center mb-3">Login</h3>
+        <form action="/login" method="POST">
+            {% csrf_token %}
+            <div class="mb-3 row g-3 align-items-center">
+                <div class="col-3">
+                     <label for="loginUser" class="col-form-label">UserName:</label>
+                </div>
+                <div class="col-8">
+                     <input type="text" id="loginUser" class="form-control" name="loginUser" required>
+                </div>
+            </div>
+            <div class="mb-3 row g-3 align-items-center">
+                <div class="col-3">
+                     <label for="loginPw" class="col-form-label">Password:</label>
+                </div>
+                <div class="col-8">
+                     <input type="password" id="loginPw" class="form-control" name="loginPw" required>
+                </div>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-2">
+                <button id="btnLogin" type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </form>
+    </div>    
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock%}</title> 
+    {% load static %}
+    {% load django_bootstrap5 %}
+	{% bootstrap_css %}
+    {% bootstrap_javascript %}  
+  
+    <link rel="shortcut icon" href="{% static 'imgs/favicon.ico' %}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- TOASTR -->
+    <link rel="stylesheet" type="text/css" href="{% static 'toastr/toastr.min.css' %}" />
+    <script type='text/javascript' src="{% static 'toastr/toastr.min.js' %}"></script>  
+
+    <script src="https://kit.fontawesome.com/ee2489e1a6.js" crossorigin="anonymous"></script>    
+    <link rel="stylesheet" href="{% static 'styles.css'%}">
+
+    <script>
+        $ (document).ready(function() {
+
+        })   
+
+    </script>
+
+</head>
+
+<body> 
+
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": false,
+            "positionClass": "toast-top-center"
+        }
+    </script>
+
+    {% include "navbar.html" %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <script> toastr["{{message.tags}}"]("{{message}}");</script>
+        {% endfor %}
+    {% endif%} 
+
+    {% block content%}
+    {% endblock %}  
+      
+</body>
+</html>

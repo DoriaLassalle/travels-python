@@ -1,0 +1,24 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Travels App</a> 
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        {% if request.session.usuarioId %}
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/travel">Home</a>
+                </li>
+            </ul>
+            <div>
+                <a class="nav-link text-white" href="#">Welcome {{name}}</a>
+            </div>                  
+            <form class="d-flex">                                
+                <a href="/logout" type="button"role="button" class="btn btn-warning" type="submit"><i class="fas fa-sign-out-alt"></i>&nbsp;Log Out</a>
+            </form>
+        </div>
+        {% endif %}        
+    </div>
+</nav>

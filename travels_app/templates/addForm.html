@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+<title>{% block title %} Add Plan {% endblock %}</title>
+
+{% block content%}
+<div class="row my-4 my-3 p-3">
+ <!-- Add travel -->
+
+    <div class="col-5 offset-1 me-2 p-2 shadow-sm  bg-light">
+        <h3 class="text-center mb-3">Add a Trip</h3>
+        <form action="/addTrip" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <div class="mb-3 row g-3 align-items-center">
+                    <div class="col-3">
+                        <label for="destination" class="col-form-label">Destination:</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="text" class="form-control" id="destination" name="destination" required >                          
+                    </div>
+                </div>
+                <div class="mb-3 row g-3 align-items-center">
+                    <div class="col-3">
+                        <label for="description" class="col-form-label">Description:</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="text" class="form-control" id="description" name="description" required>                          
+                    </div>
+                </div>
+              
+                <div class="mb-3 row g-3 align-items-center">
+                    <div class="col-3">
+                         <label for="startDate" class="col-form-label">Travel Date From:</label>
+                    </div>
+                    <div class="col-8">
+                         <input type="date" id="startDate" class="form-control" name="startDate" required>
+                    </div>
+                </div>
+                <div class="mb-3 row g-3 align-items-center">
+                    <div class="col-3">
+                         <label for="endDate" class="col-form-label">Travel Date To:</label>
+                    </div>
+                    <div class="col-8">
+                         <input type="date" id="endDate" class="form-control" name="endDate" required>
+                    </div>
+                </div>
+            </div>                       
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-2">
+                <button id="btnAdd" type="submit" class="btn btn-info text-white">Add</button>
+            </div>        
+        </form>
+    </div>
+</div>
+{% endblock %}

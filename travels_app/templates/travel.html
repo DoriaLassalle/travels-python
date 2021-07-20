@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+<title>{% block title %} Travel Home {% endblock %}</title>
+
+{% block content%}
+<div class="container p-3">    
+    <div class="row mx-auto shadow-sm my-4 p-3">
+        <h3 class="mb-4">Hi {{name}} !!</h3>   
+   
+        <!-- User travels -->
+        <div class="col-10 offset-1 mb-3">
+            <h5>Your Trip Schedule</h5>
+            <table class="table table-striped mb-3">
+                <thead>
+                    <tr>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Travel Start Date</th>
+                        <th scope="col">Travel End Date</th>
+                        <th scope="col">Plan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for travel in allUserTravels %}
+                        <tr>
+                            <th scope="row">
+                                <a href="/travels/destination/{{travel.id}}" class="text-decoration-none">{{travel.destination}}</a>
+                            </th>
+                            <td>{{travel.start}}</td>
+                            <td>{{travel.end}}</td>
+                            <td>{{travel.description}}</td>                                      
+                        </tr>
+                    {% empty %}
+                        <th scope="row">You have no travels yet</th>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Other travels -->
+        <div class="col-10 offset-1">
+            <h5 class="mt-3">Other User's Travel Plans</h5>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Travel Start Date</th>
+                        <th scope="col">Travel End Date</th>
+                        <th scope="col">Do you want to Join?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for travel in allOtherTravels %}
+                        <tr>
+                            <th scope="row">{{travel.planned_by.name}}</th>
+                            <th>
+                                <a href="/travels/destination/{{travel.id}}" class="text-decoration-none">{{travel.destination}}</a>
+                            </th>
+                            <td>{{travel.start}}</td>
+                            <td>{{travel.end}}</td>
+                            <th>
+                                <a href="/join/{{travel.id}}" class="text-decoration-none">Join</a>
+                            </th>                                      
+                        </tr>
+                    {% empty %}
+                        <th scope="row">No travels yet</th>
+    
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center my-2">
+            <a href="/travels/add" type="button" class="btn btn-info text-white">Add Travel Plan</a>
+        </div>
+
+    </div>
+
+</div>
+{% endblock%}

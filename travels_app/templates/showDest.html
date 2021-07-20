@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+<title>{% block title %} Destination {% endblock %}</title>
+
+{% block content%}
+
+<div class="row my-4 my-3 p-3">
+    <div class="col-8 offset-2 bg-light text-secondary px-5">  
+
+        <h3 class="my-3">{{dest.destination}}</h3>
+        <h5>Planned By: {{dest.planned_by.name}}</h5>
+        <h5>Description: {{dest.description}}</h5>
+        <p class="mb-0">- Travel Date From: {{dest.start}}</p>
+        <p>- Travel Date To: {{dest.end}}</p>
+        <hr>
+        
+    </div>    
+
+    <div class="col-8 offset-2 bg-light text-secondary px-5 pb-3"> 
+        <h4 class="my-3">Other Users joining this trip:</h4>
+
+        {% for user in tripUsers%}
+            <p>* {{user.name}}</p>
+        {% empty %}
+            <p>*** No users joined this trip ***</p>
+        {% endfor %}
+    
+    </div>
+
+</div>
+{% endblock %}

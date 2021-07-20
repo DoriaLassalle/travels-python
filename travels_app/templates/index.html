@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+<title>{% block title %} {% endblock %}</title>
+
+{% block content%}
+<div class="row mb-4">
+    <div class="container my-4">
+        <h2 class="text-center my-4">Welcome to your Travel App !!</h2>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-2">
+            <a href="/loginForm" class="btn btn-warning " role="button">Click Here to Start!</a>
+        </div>
+    </div>
+
+    <div>
+        {% load static %}
+        <img src="{% static 'imgs/travel.png' %}" alt="ninjareading"  class="img-fluid mx-auto d-block">
+
+    </div>
+</div>
+{% endblock %}

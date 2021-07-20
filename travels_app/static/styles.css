@@ -1,0 +1,14 @@
+
+.shad{
+    box-shadow: 2px 4px 15px 3px #727171 ; /*derecha, abajo, blur, size- inset->innershadow  */
+}
+.txt-shadow{
+    text-shadow: 4px 2px  #000000;    
+}
+.bgd{
+    background-color: #43515a;
+}
+.bgImg{
+    background-image: url("img_tree.gif"), url("paper.gif");
+    background-color: #cccccc;
+}
